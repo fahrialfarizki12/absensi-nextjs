@@ -1,26 +1,11 @@
-
-import Navbar from "@/components/dashboard/Navbar";
-import ToasyProvider from "@/components/ToasyProvider"; 
-import NextTopLoader from "nextjs-toploader";
+// app/dashboard/layout.tsx
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-export const metadata = {
-  title: "Dashboard | HOME",
-  description: "Dashboard Prakerind SMKS PGRI I TRANSPRAM II",
-};
+import ClientLayout from "./ClientLayout";
 
-export default function RootLayout({ children }) {
+export default function Layout({ children }) {
   const token = cookies().get("token")?.value;
+  if (!token) redirect("/auth/login");
 
-  if (!token) redirect("/auth/login")
-  return (
-    <>
-        <Navbar />
-      <main className="md:ml-80 md:w-[calc(100%-23rem)] mt-20">
-      	<ToasyProvider/>
-      	<NextTopLoader color="#2F855A"/>
-        {children}
-      </main>
-    </>
-  );
+  return <ClientLayout>{children}</ClientLayout>;
 }
