@@ -10,11 +10,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const cookieStore = await cookies();
-  const token = cookieStore.get("token")?.value;
-
-  if (!token) redirect("/auth/login");
-
+  
   return (
     <>
       <Navbar />
