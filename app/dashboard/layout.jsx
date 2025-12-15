@@ -3,15 +3,18 @@ import { redirect } from "next/navigation";
 import Navbar from "@/components/dashboard/Navbar";
 import ToasyProvider from "@/components/ToasyProvider";
 import NextTopLoader from "nextjs-toploader";
+
 export const metadata = {
   title: "Dashboard | HOME",
   description: "Dashboard Prakerind SMKS PGRI I TRANSPRAM II",
 };
 
-export default function RootLayout({ children }) {
-  const token = cookies().get("token")?.value;
+export default async function RootLayout({ children }) {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token")?.value;
 
   if (!token) redirect("/auth/login");
+
   return (
     <>
       <Navbar />
