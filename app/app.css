@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@plugin "daisyui"{
+  themes: light --default
+
+}
+
+@theme {
+  --color-transpram:  #2F855A
+}
