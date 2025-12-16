@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "api.alfiagashop.biz.id",
+        hostname: "api-v2.alfiagashop.biz.id",
         pathname: "/**",
       },
     ],
